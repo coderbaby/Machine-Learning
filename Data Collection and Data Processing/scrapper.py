@@ -11,5 +11,11 @@ results = soup.find_all('span', attrs = {'class':'short-desc'})
 records = []
 for result in results:
     print("=======")
-    print(result)
+    date = result.find('strong').text[0:-1] + ', 2017'
+    lie = result.contents[1][1:-2]
+    explanation = result.find('a').text[1:-1]
+    url = result.find('a')['href']
+    records.append((date, lie, explanation, url))
+
+print(records)
     
